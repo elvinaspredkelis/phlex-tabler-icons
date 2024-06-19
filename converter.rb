@@ -1,23 +1,13 @@
 require "phlexing"
 
+puts "--- ARGV ---"
+puts ARGV.inspect
+puts "--- ARGV ---"
+
+
 # Setting the input SVG
 input_svg = <<~SVG
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M3 16v-6a2 2 0 1 1 4 0v6" />
-  <path d="M3 13h4" />
-  <path d="M10 8v6a2 2 0 1 0 4 0v-1a2 2 0 1 0 -4 0v1" />
-  <path d="M20.732 12a2 2 0 0 0 -3.732 1v1a2 2 0 0 0 3.726 1.01" />
-</svg>
+<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
 SVG
 
 # Substituting attributes to dynamic values
@@ -28,7 +18,12 @@ input_svg.gsub!('stroke="currentColor"', 'stroke="<%= @options[:stroke] || "curr
 input_svg.gsub!('stroke-width="2"', 'stroke-width="<%= @options[:stroke_width] || "2" %>"')
 
 # Converting the input SVG to a Phlex Component
-output = Phlexing::Converter.convert(input_svg, component: true, component_name: "PhlexTablerIcons::Abc", parent_component: "Phlex::SVG")
+output = Phlexing::Converter.convert(input_svg, component: true, component_name: "Icons::Menu2", parent_component: "Phlex::SVG")
 
 # Log the output
 puts output
+
+
+
+# File.read("/Users/elvinas/Repositories/tabler-icons/icons/outline")
+# Dir["/Users/elvinas/Repositories/tabler-icons/icons/outline/*.svg"]
